@@ -29,10 +29,23 @@ def editcsprojUseElementTree(list):
         str.text = result
         tree.write(csproj)
 
-def editcsprojUseDom(list)
+def editcsprojUseDom(list):
+    for csproj in list:
+        print(csproj)
+        from xml.dom.minidom import parse
+        import xml.dom.minidom
+        DOMTree = xml.dom.minidom.parse(csproj)
+        collection = DOMTree.documentElement
+        postbuildevent = collection.getElementsByTagName("PostBuildEvent")
+        print postbuildevent[0].firstChild.nodeValue
+        postbuildevent[0].firstChild.nodeValue = postbuildevent[0].firstChild.nodeValue.replace("start /b xcopy","start /wait /b xcopy")
+        print postbuildevent[0].firstChild.nodeValue
+        file_handle = open(csproj,"wb")
+        DOMTree.writexml(file_handle)
+        file_handle.close()
 
 findcsproj(".")
-editcsproj(list)
+editcsprojUseDom(list)
 
     
 
