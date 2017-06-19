@@ -4,9 +4,113 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
+        xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
         mc:Ignorable="d"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DatePickerResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="GlobalTitleColor" Color="#CA7B00" />
+            <SolidColorBrush x:Key="GlobalSelectedColor" Color="#FFA9570C" />
+            <SolidColorBrush x:Key="GlobalNormalColor" Color="#FFC8C8C8" />
+            <SolidColorBrush x:Key="GlobalDisableColor" Color="#FF595959"/>
+            <SolidColorBrush x:Key="GlobalWindowBackColor1" Color="#FF191919"/>
+            <SolidColorBrush x:Key="GlobalWindowBackColor2" Color="#FF333333"/>
+            <SolidColorBrush x:Key="GlobalWindowBackColor3" Color="Transparent"/>
+            <SolidColorBrush x:Key="GlobalWindowBackColor4" Color="#305988"/>
+
+            <sys:Double x:Key="GlobalTitleFontSize">14</sys:Double>
+            <sys:Double x:Key="GlobalTitleFontSize1">20</sys:Double>
+            <sys:Double x:Key="GlobalNormalFontSize">14</sys:Double>
+            <sys:Double x:Key="GlobalValueFontSize">12</sys:Double>
+
+            <FontFamily x:Key="GlobalFontFamily">Microsoft yahei</FontFamily>
+
+            <sys:Double x:Key="NormalButtonWidth">140</sys:Double>
+            <sys:Double x:Key="NormalButtonHeight">45</sys:Double>
+
+            <sys:Double x:Key="NormalButtonWidth1">100</sys:Double>
+            <sys:Double x:Key="NormalButtonHeight1">35</sys:Double>
+
+            <sys:Double x:Key="StatusControlWidth">250</sys:Double>
+            <sys:Double x:Key="StatusControlHeight">45</sys:Double>
+
+            <sys:Double x:Key="TransducerImageWidth">135</sys:Double>
+            <sys:Double x:Key="TransducerImageHeight">105</sys:Double>
+            <LinearGradientBrush x:Key="TransducerImageDefault" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF181C1F" Offset="0.931" />
+                <GradientStop Color="#FF3D464F" Offset="0.06" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="TransducerImageSelected" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF7810B" Offset="0.138" />
+                <GradientStop Color="#FFB24900" Offset="1" />
+            </LinearGradientBrush>
+
+            <sys:Double x:Key="TabItemWidth">100</sys:Double>
+            <sys:Double x:Key="TabItemHeight">50</sys:Double>
+
+
+            <LinearGradientBrush x:Key="GlobalLinearGradientBrushDefault" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF181C1F" Offset="0.931" />
+                <GradientStop Color="#FF3D464F" Offset="0.06" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="GlobalLinearGradientBrushSelected" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF7810B" Offset="0.138" />
+                <GradientStop Color="#FFB24900" Offset="1" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="CineLoopLinearGradientBrush" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF7810B" Offset="0" />
+                <GradientStop Color="#FFB24900" Offset="1" />
+            </LinearGradientBrush>
+
+            <AlternationConverter x:Key="AlternationConverter">
+                <SolidColorBrush>#00121929</SolidColorBrush>
+                <SolidColorBrush>#000F121D</SolidColorBrush>
+            </AlternationConverter>
+
+            <AlternationConverter x:Key="AlternationConverter1">
+                <SolidColorBrush>#121929</SolidColorBrush>
+                <SolidColorBrush>#0F121D</SolidColorBrush>
+            </AlternationConverter>
+
+            <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+                <Setter Property="Placement" Value="Top"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToolTip">
+                            <Grid Background="Transparent">
+                                <Rectangle Fill="#FF191919" Stroke="{DynamicResource GlobalTitleColor}" Grid.RowSpan="6" RadiusX="0" RadiusY="0" />
+                                <ContentPresenter Margin="5">
+                                    <ContentPresenter.Resources>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                            <Setter Property="TextAlignment" Value="Center" />
+                                            <Setter Property="Foreground" Value="{DynamicResource GlobalNormalColor}" />
+                                            <Setter Property="FontSize" Value="{DynamicResource GlobalValueFontSize}" />
+                                            <Setter Property="FontFamily" Value="{DynamicResource GlobalFontFamily}" />
+                                        </Style>
+                                    </ContentPresenter.Resources>
+                                </ContentPresenter>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel>
+        <DatePicker Name="datepicker" Style="{DynamicResource DatePickerStyle1}" Height="30" CalendarStyle="{DynamicResource CalendarStyle1}" SelectedDateChanged="datepicker_SelectedDateChanged" Width="300" VerticalAlignment="Center"/>
+        <DatePicker  Width="300" VerticalAlignment="Center"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="47" Margin="134,0,0,0" Width="213" Click="Button_Click"/>
+        <DataGrid ColumnWidth="*" Name="dataGrid" ItemsSource="{Binding MyProperty}" Margin="5"/>
+        <toolkit:DataGrid ColumnWidth="*" Name="dataGrid1" ItemsSource="{Binding MyProperty}" Margin="5"/>
+    </StackPanel>
 </Window>
