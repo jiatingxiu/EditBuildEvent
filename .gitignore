@@ -1,3 +1,4 @@
-/Test/obj
-/Test/bin
-.vs
+*bin/
+*obj/
+*.vs
+*.suo
